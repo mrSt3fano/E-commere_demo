@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmacion de Actualización de datos</title>
+
+</head>
+
+<body>
+
+<h2>Usuario actualizado exitosamente!!</h2>
+
+<!-- display first name, last name and email -->
+<table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+    <thead class="table-dark">
+    <tr>
+        <th>Nombre</th>
+        <th>Imagen</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr class="border-bottom border-secondary">
+        <td th:text="${useractualizado.nombre}"></td>
+        <td><img th:src="@{'/usuario/imagen/' + ${useractualizado.nombre}}" alt="Imagen del usuario" width="150"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<hr>
+
+<a th:href="@{/}">Regresar</a>
+
+</body>
+
+</html>
