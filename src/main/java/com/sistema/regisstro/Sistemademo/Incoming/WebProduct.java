@@ -1,5 +1,7 @@
 package com.sistema.regisstro.Sistemademo.Incoming;
 
+import com.sistema.regisstro.Sistemademo.Entity.Categorias;
+
 public class WebProduct {
 
     private String nombre;
@@ -9,6 +11,8 @@ public class WebProduct {
     private String marca;
 
     private int stock;
+
+    private Categorias categoria;
 
     public WebProduct() {
     }
@@ -43,5 +47,13 @@ public class WebProduct {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public Categorias getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categorias categoria) {
+        this.categoria = categoria;
     }
 }

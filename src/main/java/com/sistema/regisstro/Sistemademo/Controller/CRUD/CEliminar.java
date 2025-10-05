@@ -1,7 +1,7 @@
 package com.sistema.regisstro.Sistemademo.Controller.CRUD;
 
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
-import com.sistema.regisstro.Sistemademo.Service.ServicioUsuario;
+import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CEliminar {
 
-    ServicioUsuario ss;
+    Servicio ss;
 
     @Autowired
-    public CEliminar(ServicioUsuario ss) {
+    public CEliminar(Servicio ss) {
         this.ss = ss;
     }
 

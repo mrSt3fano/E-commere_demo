@@ -1,4 +1,4 @@
-package com.sistema.regisstro.Sistemademo.Service;
+package com.sistema.regisstro.Sistemademo.Service.Usuario;
 
 import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
 import com.sistema.regisstro.Sistemademo.AccessDB.Login_Sign.RolDAO;
@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class ServicioImpl implements ServicioUsuario{
+public class ServicioImpl implements Servicio {
 
     private UsuarioDAO u;
     private RolDAO r;

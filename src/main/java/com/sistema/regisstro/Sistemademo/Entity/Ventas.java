@@ -20,6 +20,9 @@ public class Ventas {
     @Column(name = "precio_venta")
     private float precioventa;
 
+    @Column(name="orden")
+    private String orden;
+
     //relacion con boleta
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
@@ -37,9 +40,10 @@ public class Ventas {
     public Ventas() {
     }
 
-    public Ventas(int cantidad, float precioventa) {
+    public Ventas(int cantidad, float precioventa, String orden) {
         this.cantidad = cantidad;
         this.precioventa = precioventa;
+        this.orden=orden;
     }
 
     public int getId() {
@@ -65,6 +69,10 @@ public class Ventas {
     public void setPrecioventa(float precioventa) {
         this.precioventa = precioventa;
     }
+
+    public String getOrden() { return orden; }
+
+    public void setOrden(String orden) { this.orden = orden; }
 
     public Boleta getBol() {
         return bol;
@@ -96,6 +104,7 @@ public class Ventas {
                 "id=" + id +
                 ", cantidad=" + cantidad +
                 ", precioventa=" + precioventa +
+                ", orden='" + orden + '\'' +
                 '}';
     }
 }

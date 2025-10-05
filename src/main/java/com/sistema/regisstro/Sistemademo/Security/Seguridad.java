@@ -1,6 +1,6 @@
 package com.sistema.regisstro.Sistemademo.Security;
 
-import com.sistema.regisstro.Sistemademo.Service.ServicioUsuario;
+import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,7 +18,7 @@ public class Seguridad {
     }
 
     @Bean
-    public DaoAuthenticationProvider autenticacon(ServicioUsuario se){
+    public DaoAuthenticationProvider autenticacon(Servicio se){
         DaoAuthenticationProvider auth=new DaoAuthenticationProvider();
         auth.setUserDetailsService(se);
         auth.setPasswordEncoder(encriptador());

@@ -89,6 +89,104 @@
 </table>
 
 <br>
+<hr>
+<br>
+
+<table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="temporal : ${aea}" class="border-bottom border-secondary">
+        <td th:text="${temporal.id}"></td>
+        <td th:text="${temporal.nombre}"></td>
+        <td th:text="${temporal.descripcion}"></td>
+
+    </tr>
+    </tbody>
+
+    <!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
+
+</table>
+<br>
+<hr>
+<br>
+
+
+<table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Marca</th>
+        <th>Stock</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="temporal : ${productos}" class="border-bottom border-secondary">
+        <td th:text="${temporal.id}"></td>
+        <td th:text="${temporal.nombre}"></td>
+        <td th:text="${temporal.precio}"></td>
+        <td th:text="${temporal.marca}"></td>
+        <td th:text="${temporal.stock}"></td>
+
+    </tr>
+    </tbody>
+
+    <!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
+
+</table>
+
+<br>
+<hr>
+<table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Marca</th>
+        <th>Stock</th>
+        <th>Categoria</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="temporal : ${productoregistrado}" class="border-bottom border-secondary">
+        <td th:text="${temporal.id}"></td>
+        <td th:text="${temporal.nombre}"></td>
+        <td th:text="${temporal.precio}"></td>
+        <td th:text="${temporal.marca}"></td>
+        <td th:text="${temporal.stock}"></td>
+        <td th:text="${temporal.categoria}"></td>
+
+    </tr>
+    </tbody>
+
+    <!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
+
+</table>
+
+<br>
+
+<hr>
+<br>
+
+
+
+</table>
+
+
+
+
+
 
 <a th:href="@{/}" class="btn btn-salida px-3 py-2">
     <i class="bi bi-box-arrow-left"></i> VOLVER A INICIO

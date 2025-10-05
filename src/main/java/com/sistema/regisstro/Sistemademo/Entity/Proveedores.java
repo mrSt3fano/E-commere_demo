@@ -29,19 +29,32 @@ public class Proveedores {
     @Column(name = "número")
     private String numero;
 
-    @OneToMany(mappedBy = "prov",cascade = {CascadeType.DETACH,CascadeType.MERGE,
+    @Column(name = "tipo_producto")
+    private String tipoDEproducto;
+
+    //relacion con productos
+//    @OneToMany(mappedBy = "prov",cascade = {CascadeType.DETACH,CascadeType.MERGE,
+//            CascadeType.PERSIST,CascadeType.REFRESH})
+//    private List<Productos> productosProv;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "prod_prov",
+            joinColumns = @JoinColumn(name = "id_prov"),
+            inverseJoinColumns = @JoinColumn(name = "id_producto"))
     private List<Productos> productosProv;
+
+
 
     public Proveedores() {
     }
 
-    public Proveedores(String nombre, String compania, String direccion, String ciudad, String numero) {
+    public Proveedores(String nombre, String compania, String direccion, String ciudad, String numero, String tipoDEproducto) {
         this.nombre = nombre;
         this.compania = compania;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.numero = numero;
+        this.tipoDEproducto = tipoDEproducto;
     }
 
     public int getId() {
@@ -92,6 +105,14 @@ public class Proveedores {
         this.numero = numero;
     }
 
+    public String getTipoDEproducto() {
+        return tipoDEproducto;
+    }
+
+    public void setTipoDEproducto(String tipoDEproducto) {
+        this.tipoDEproducto = tipoDEproducto;
+    }
+
     public List<Productos> getProductosProv() {
         return productosProv;
     }
@@ -105,7 +126,7 @@ public class Proveedores {
             productosProv =new ArrayList<>();
         }
         productosProv.add(p);//añadir producto a la lista de productos
-        p.setProv(this);//añadir lista a proveedor
+        p.agregarproveedor(this);//añadir lista a proveedor
     }
 
     @Override
@@ -117,6 +138,7 @@ public class Proveedores {
                 ", direccion='" + direccion + '\'' +
                 ", ciudad='" + ciudad + '\'' +
                 ", numero='" + numero + '\'' +
+                ", tipoDEproducto='" + tipoDEproducto + '\'' +
                 '}';
     }
 }

@@ -3,7 +3,7 @@ package com.sistema.regisstro.Sistemademo.Security;
 import java.io.IOException;
 
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
-import com.sistema.regisstro.Sistemademo.Service.ServicioUsuario;
+import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,10 +17,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ControladorRegistroUsuario implements AuthenticationSuccessHandler {
 
-    private ServicioUsuario vars;
+    private Servicio vars;
 
     @Autowired
-    public ControladorRegistroUsuario(ServicioUsuario theUserService) {
+    public ControladorRegistroUsuario(Servicio theUserService) {
         vars = theUserService;
     }
 

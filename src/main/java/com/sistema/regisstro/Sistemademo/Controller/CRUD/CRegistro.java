@@ -1,10 +1,17 @@
 package com.sistema.regisstro.Sistemademo.Controller.CRUD;
 
+import java.util.List;
 import java.util.logging.Logger;
 
+import com.sistema.regisstro.Sistemademo.Entity.Categorias;
+import com.sistema.regisstro.Sistemademo.Entity.Productos;
+import com.sistema.regisstro.Sistemademo.Incoming.WebCategory;
+import com.sistema.regisstro.Sistemademo.Incoming.WebProduct;
 import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
-import com.sistema.regisstro.Sistemademo.Service.ServicioUsuario;
+import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Category.ServicioCategorias;
+import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product.ServicioProductos;
+import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -25,11 +32,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CRegistro {
 
     private Logger log = Logger.getLogger(getClass().getName());
-    private ServicioUsuario serv;
+    private Servicio serv;
+    private ServicioCategorias servcat;
+    private ServicioProductos servprod;
 
     @Autowired
-    public CRegistro(ServicioUsuario serv) {
+    public CRegistro(Servicio serv, ServicioCategorias saf, ServicioProductos aa) {
         this.serv = serv;
+        this.servcat=saf;
+        this.servprod=aa;
     }
 
     @InitBinder
@@ -78,4 +89,39 @@ public class CRegistro {
 
         return "/Login-SignUp/registro-confirmacion";
     }
+
+    //registro categorias nuevas
+    @GetMapping("/categoria")
+    public String registrarnuevacategoria(Model mo){
+        mo.addAttribute("webCategoria", new WebCategory());
+        return "/Gerency/Forms_Ecommerce/NewCategoy";
+    }
+
+    @PostMapping("/procesarcategoria")
+    public String procesarcategorianueva(Model theModel,
+            @Valid @ModelAttribute("webCategory") WebCategory nuevo)
+    {
+        Categorias cate=servcat.guardarCategorias(nuevo);
+        theModel.addAttribute("categoriaregistrado",cate);
+        return "/Gerency/consultasDeAdmin";
+    }
+
+    //registro de nuevos productos
+    @GetMapping("/productos")
+    public String registrarnuevosproductos(Model mo){
+        mo.addAttribute("webProductos", new WebProduct());
+        List<Categorias> ses=servcat.consultaCategorias();
+        mo.addAttribute("imprimir",ses);
+        return "/Gerency/Forms_Ecommerce/NewProduct";
+    }
+
+    @PostMapping("/procesarproducto")
+    public String procesasnuevosproductos(Model theModel,
+                                         @Valid @ModelAttribute("imprimir") WebProduct nuevo)
+    {
+        Productos cate=servprod.guardarProductos(nuevo);
+        theModel.addAttribute("productoregistrado",cate);
+        return "/Gerency/consultasDeAdmin";
+    }
+
 }

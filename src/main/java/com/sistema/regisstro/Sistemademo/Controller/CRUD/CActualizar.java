@@ -3,7 +3,7 @@ package com.sistema.regisstro.Sistemademo.Controller.CRUD;
 
 import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
-import com.sistema.regisstro.Sistemademo.Service.ServicioUsuario;
+import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/actualizar")
 public class CActualizar {
 
-    ServicioUsuario e;
+    Servicio e;
 
     @Autowired
-    public CActualizar(ServicioUsuario e) {
+    public CActualizar(Servicio e) {
         this.e = e;
     }
 

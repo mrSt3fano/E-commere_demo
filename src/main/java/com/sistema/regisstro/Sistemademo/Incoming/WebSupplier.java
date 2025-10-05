@@ -12,6 +12,8 @@ public class WebSupplier {
 
     private String numeroTelefonico;
 
+    private String tipoDeproducto;
+
     public WebSupplier() {
     }
 
@@ -54,4 +56,8 @@ public class WebSupplier {
     public void setNumeroTelefonico(String numeroTelefonico) {
         this.numeroTelefonico = numeroTelefonico;
     }
+
+    public String getTipoDeproducto() {return tipoDeproducto; }
+
+    public void setTipoDeproducto(String tipoDeproducto) { this.tipoDeproducto = tipoDeproducto; }
 }

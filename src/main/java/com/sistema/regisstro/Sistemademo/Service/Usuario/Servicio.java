@@ -1,4 +1,4 @@
-package com.sistema.regisstro.Sistemademo.Service;
+package com.sistema.regisstro.Sistemademo.Service.Usuario;
 
 import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
 import com.sistema.regisstro.Sistemademo.Entity.Roles;
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface ServicioUsuario extends UserDetailsService {
+public interface Servicio extends UserDetailsService {
         Usuario encontrarUsuarioAhora(String usuario);
         Usuario guardarUsuario(WebUser nuevousuario);
         List<Usuario> consultausuarios();

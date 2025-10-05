@@ -6,6 +6,8 @@ public class WebSale {
 
     private float precioventa;
 
+    private String orden;
+
     public WebSale() {
     }
 
@@ -24,4 +26,8 @@ public class WebSale {
     public void setPrecioventa(float precioventa) {
         this.precioventa = precioventa;
     }
+
+    public String getOrden() { return orden; }
+
+    public void setOrden(String orden) { this.orden = orden; }
 }
