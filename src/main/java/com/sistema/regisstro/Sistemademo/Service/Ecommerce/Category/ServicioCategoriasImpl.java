@@ -4,8 +4,7 @@ import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.CategoriaData;
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.ProductoData;
 import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
-import com.sistema.regisstro.Sistemademo.Entity.Roles;
-import com.sistema.regisstro.Sistemademo.Incoming.WebCategory;
+import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

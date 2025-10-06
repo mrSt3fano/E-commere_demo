@@ -5,9 +5,9 @@ import java.util.logging.Logger;
 
 import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
-import com.sistema.regisstro.Sistemademo.Incoming.WebCategory;
-import com.sistema.regisstro.Sistemademo.Incoming.WebProduct;
-import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
+import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
+import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
+import com.sistema.regisstro.Sistemademo.DTO.WebUser;
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Category.ServicioCategorias;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product.ServicioProductos;
@@ -116,12 +116,11 @@ public class CRegistro {
     }
 
     @PostMapping("/procesarproducto")
-    public String procesasnuevosproductos(Model theModel,
+    public void procesasnuevosproductos(Model theModel,
                                          @Valid @ModelAttribute("imprimir") WebProduct nuevo)
     {
         Productos cate=servprod.guardarProductos(nuevo);
         theModel.addAttribute("productoregistrado",cate);
-        return "/Gerency/consultasDeAdmin";
     }
 
 }

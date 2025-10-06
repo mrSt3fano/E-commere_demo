@@ -1,9 +1,8 @@
 package com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product;
 
-import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
 import com.sistema.regisstro.Sistemademo.Entity.Ventas;
-import com.sistema.regisstro.Sistemademo.Incoming.WebProduct;
+import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
 
 import java.util.List;
 

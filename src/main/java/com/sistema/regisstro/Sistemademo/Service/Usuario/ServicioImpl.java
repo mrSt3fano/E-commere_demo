@@ -1,6 +1,6 @@
 package com.sistema.regisstro.Sistemademo.Service.Usuario;
 
-import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
+import com.sistema.regisstro.Sistemademo.DTO.WebUser;
 import com.sistema.regisstro.Sistemademo.AccessDB.Login_Sign.RolDAO;
 import com.sistema.regisstro.Sistemademo.AccessDB.Login_Sign.UsuarioDAO;
 import com.sistema.regisstro.Sistemademo.Entity.Roles;

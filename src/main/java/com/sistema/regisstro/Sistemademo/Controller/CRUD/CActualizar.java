@@ -1,7 +1,7 @@
 package com.sistema.regisstro.Sistemademo.Controller.CRUD;
 
 
-import com.sistema.regisstro.Sistemademo.Incoming.WebUser;
+import com.sistema.regisstro.Sistemademo.DTO.WebUser;
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
 import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import jakarta.validation.Valid;

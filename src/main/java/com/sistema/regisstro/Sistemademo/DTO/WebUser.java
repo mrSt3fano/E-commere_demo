@@ -1,4 +1,4 @@
-package com.sistema.regisstro.Sistemademo.Incoming;
+package com.sistema.regisstro.Sistemademo.DTO;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

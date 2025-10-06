@@ -2,15 +2,13 @@ package com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product;
 
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.CategoriaData;
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.ProductoData;
-import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.VentasData;
 import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
 import com.sistema.regisstro.Sistemademo.Entity.Ventas;
-import com.sistema.regisstro.Sistemademo.Incoming.WebProduct;
+import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

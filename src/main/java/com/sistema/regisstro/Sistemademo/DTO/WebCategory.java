@@ -1,4 +1,4 @@
-package com.sistema.regisstro.Sistemademo.Incoming;
+package com.sistema.regisstro.Sistemademo.DTO;
 
 public class WebCategory {
 

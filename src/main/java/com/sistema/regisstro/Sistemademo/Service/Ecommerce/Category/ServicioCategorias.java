@@ -2,7 +2,7 @@ package com.sistema.regisstro.Sistemademo.Service.Ecommerce.Category;
 
 import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
-import com.sistema.regisstro.Sistemademo.Incoming.WebCategory;
+import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
 
 import java.util.List;
 

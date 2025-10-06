@@ -1,4 +1,4 @@
-package com.sistema.regisstro.Sistemademo.Incoming;
+package com.sistema.regisstro.Sistemademo.DTO;
 
 import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 
