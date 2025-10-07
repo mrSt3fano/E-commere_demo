@@ -99,7 +99,7 @@ public class CRegistro {
 
     @PostMapping("/procesarcategoria")
     public String procesarcategorianueva(Model theModel,
-            @Valid @ModelAttribute("webCategory") WebCategory nuevo)
+            @Valid @ModelAttribute("webCategoria") WebCategory nuevo)
     {
         Categorias cate=servcat.guardarCategorias(nuevo);
         theModel.addAttribute("categoriaregistrado",cate);

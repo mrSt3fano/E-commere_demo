@@ -10,17 +10,21 @@ import java.util.List;
 @Repository
 public interface Operaciones extends JpaRepository<Usuario,Integer> {
 
-// Asume que Usuario tiene una lista de Boletas (u.boletas)
-// Asume que Boleta tiene una lista de Ventas (b.ventas)
-// Asume que Venta está relacionada con Producto (v.producto)
 
-    @Query("SELECT u.nombre AS nombre_de_usuario, " +
-            "       b.fecha, v.orden, v.cantidad, v.precioventa AS precio_final, " +
-            "       p.nombre AS nombre_producto, p.marca, p.precio AS precio_unitario " +
-            "FROM Usuario u " +
-            "JOIN u.boleta b " + // Navega a través de la relación definida en Usuario
-            "JOIN b.ventasList v " +  // Navega a través de la relación definida en Boleta
-            "JOIN v.prodc p")  // Navega a través de la relación definida en Venta
+    @Query("SELECT u.nombre AS Usuario, \n" +
+            "       b.fecha, v.orden, v.cantidad,p.precio as precio_unitario, \n" +
+            "       (p.precio * v.cantidad) as precio_final,\n" +
+            "p.nombre as nombre_producto,ca.nombre as categoria, ca.descripcion,\n" +
+            "p.marca, pv.tipoDEproducto,\n" +
+            "pv.nombre as nombre_proveedor, pv.ciudad as ciudad, pv.compania\n" +
+            "as nombre_compañia, pv.numero as telefono\n"+
+            " FROM Usuario u " +
+            " JOIN u.boleta b " +
+            " JOIN b.ventasList v " +
+            " JOIN v.prodc p"+
+            " JOIN p.prov pv"+
+            " JOIN p.cat ca ")  // Navega a través de la relación definida en Venta
     List<Object[]> obtenerConsultasGenerales();
+
 
 }

@@ -32,12 +32,15 @@ public class ExportController {
 
         String rutaArchivo = "C:/ruta/donde/guardar/productos.csv";
 
-
         PrintWriter writer = response.getWriter();
-        writer.println("Nombre,Fecha,Orden,Cantidad,Precio_final,nombre_producto,marca,precio_unitario");
+        writer.println("Nombre,Fecha,Orden,Cantidad,Precio_Unitario,Precio_Final," +
+                "Nombre_Producto,Categoria,Descripcion,Marca,Tipo_Producto,Nombre_Proveedor," +
+                "Ciudad,Nombre_Compañia,Telefono");
+        int i=0;
 
         for (Object[] p : Cate) {
-            writer.println(p[0]+","+p[1]+","+p[2]+","+p[3]+","+p[4]+","+p[5]+","+p[6]+","+p[7]);
+            writer.println(p[0]+","+p[1]+","+p[2]+","+p[3]+","+p[4]+","+p[5]+","+p[6]+","+p[7]+","+p[8]+
+                    ","+p[9]+","+p[10]+","+p[11]+","+p[12]+","+p[13]+","+p[14]);
         }
 
         writer.flush();
