@@ -86,13 +86,11 @@ USUARIOS
         </td>
     </tr>
     </tbody>
-
-<!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
-
 </table>
 
-<br>
-<hr>
+
+
+<br><hr>
 CONSULTAS CATEGORIAS
 <hr>
 <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
@@ -106,18 +104,16 @@ CONSULTAS CATEGORIAS
 
     <tbody>
     <tr th:each="temporal : ${aea}" class="border-bottom border-secondary">
-        <td th:text="${temporal.id}"></td>
-        <td th:text="${temporal.nombre}"></td>
-        <td th:text="${temporal.descripcion}"></td>
-
+        <td th:text="${temporal.id} ?: N.A"></td>
+        <td th:text="${temporal.nombre} ?: N.A"></td>
+        <td th:text="${temporal.descripcion} ?: N.A"></td>
     </tr>
     </tbody>
-
-    <!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
-
 </table>
 <br>
 <hr>
+
+
 CONSULTA PRODUCTOS POR CATEGORÍA
 <hr>
 <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
@@ -132,22 +128,45 @@ CONSULTA PRODUCTOS POR CATEGORÍA
     </thead>
 
     <tbody>
-    <tr th:each="temporal : ${productos}" class="border-bottom border-secondary">
-        <td th:text="${temporal.id}"></td>
-        <td th:text="${temporal.nombre}"></td>
-        <td th:text="${temporal.precio}"></td>
-        <td th:text="${temporal.marca}"></td>
-        <td th:text="${temporal.stock}"></td>
-
+    <tr th:each="temporal : ${productbycat}" class="border-bottom border-secondary">
+        <td th:text="${temporal.id} ?: N.A"></td>
+        <td th:text="${temporal.nombre} ?: N.A"></td>
+        <td th:text="${temporal.precio} ?: N.A"></td>
+        <td th:text="${temporal.marca} ?: N.A"></td>
+        <td th:text="${temporal.stock} ?: N.A"></td>
     </tr>
     </tbody>
-
-    <!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
-
 </table>
 
-<br>
+
+
+<br><hr>
+CONSULTA PRODUCTOS
 <hr>
+<table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Marca</th>
+        <th>Stock</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="producto : ${productosconsulta}" class="border-bottom border-secondary">
+        <td th:text="${producto.id} ?: N.A"></td>
+        <td th:text="${producto.nombre} ?: N.A"></td>
+        <td th:text="${producto.precio} ?: N.A"></td>
+        <td th:text="${producto.marca} ?: N.A"></td>
+        <td th:text="${producto.stock} ?: N.A"></td>
+    </tr>
+    </tbody>
+</table>
+<br><hr><br>
+
+
 PRODUCTO REGISTRADO
 <hr>
 <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
@@ -158,37 +177,25 @@ PRODUCTO REGISTRADO
         <th>Precio</th>
         <th>Marca</th>
         <th>Stock</th>
-        <th>Categoria</th>
     </tr>
     </thead>
 
     <tbody>
     <tr th:each="temporal : ${productoregistrado}" class="border-bottom border-secondary">
-        <td th:text="${temporal.id}"></td>
-        <td th:text="${temporal.nombre}"></td>
-        <td th:text="${temporal.precio}"></td>
-        <td th:text="${temporal.marca}"></td>
-        <td th:text="${temporal.stock}"></td>
-        <td th:text="${temporal.categoria}"></td>
-
+        <td th:text="${temporal.id} ?: N.A"></td>
+        <td th:text="${temporal.nombre} ?: N.A"></td>
+        <td th:text="${temporal.precio} ?: N.A"></td>
+        <td th:text="${temporal.marca} ?: N.A"></td>
+        <td th:text="${temporal.stock} ?: N.A"></td>
     </tr>
     </tbody>
-
-    <!--    <img th:src="@{/usuario/imagen/{nombre}(nombre=${conss.nombre})}" />-->
-
 </table>
-
-<br>
-
-<hr>
-<br>
+<br><hr><br>
 
 
 
-</table>
-
-<a th:href="@{/}" class="btn btn-salida px-3 py-2">
-    <i class="bi bi-box-arrow-left"></i> VOLVER A INICIO
+<a th:href="@{/gerencia}" class="btn btn-salida px-3 py-2">
+    <i class="bi bi-box-arrow-left"></i> VOLVER A PANEL
 </a>
 
 </body>

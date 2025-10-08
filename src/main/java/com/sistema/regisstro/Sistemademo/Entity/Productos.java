@@ -18,13 +18,13 @@ public class Productos {
     private String nombre;
 
     @Column(name = "precio")
-    private float precio;
+    private Double precio;
 
     @Column(name = "marca")
     private String marca;
 
     @Column(name = "stock")
-    private int stock;
+    private Integer stock;
 
     //relacion con categorias
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
@@ -50,7 +50,7 @@ public class Productos {
     public Productos() {
     }
 
-    public Productos(String nombre, float precio, String marca, int stock) {
+    public Productos(String nombre, Double precio, String marca, Integer stock) {
         this.nombre = nombre;
         this.precio = precio;
         this.marca = marca;
@@ -73,11 +73,11 @@ public class Productos {
         this.nombre = nombre;
     }
 
-    public float getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -89,11 +89,11 @@ public class Productos {
         this.marca = marca;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 

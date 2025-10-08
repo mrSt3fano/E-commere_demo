@@ -6,11 +6,11 @@ public class WebProduct {
 
     private String nombre;
 
-    private float precio;
+    private Double precio;
 
     private String marca;
 
-    private int stock;
+    private Integer stock;
 
     private Categorias categoria;
 
@@ -25,11 +25,11 @@ public class WebProduct {
         this.nombre = nombre;
     }
 
-    public float getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -41,11 +41,11 @@ public class WebProduct {
         this.marca = marca;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 

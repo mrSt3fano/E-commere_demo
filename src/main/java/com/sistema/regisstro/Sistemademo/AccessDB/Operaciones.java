@@ -11,7 +11,7 @@ import java.util.List;
 public interface Operaciones extends JpaRepository<Usuario,Integer> {
 
 
-    @Query("SELECT u.nombre AS Usuario, \n" +
+    @Query("SELECT u.nombre AS Usuario, u.password, \n" +
             "       b.fecha, v.orden, v.cantidad,p.precio as precio_unitario, \n" +
             "       (p.precio * v.cantidad) as precio_final,\n" +
             "p.nombre as nombre_producto,ca.nombre as categoria, ca.descripcion,\n" +
@@ -23,7 +23,7 @@ public interface Operaciones extends JpaRepository<Usuario,Integer> {
             " JOIN b.ventasList v " +
             " JOIN v.prodc p"+
             " JOIN p.prov pv"+
-            " JOIN p.cat ca ")  // Navega a través de la relación definida en Venta
+            " JOIN p.cat ca ")  // Exportar boleta
     List<Object[]> obtenerConsultasGenerales();
 
 

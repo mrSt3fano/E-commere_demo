@@ -51,8 +51,8 @@
 <div class="registro-container">
   <h4 class="text-center mb-4">Nuevo Producto</h4>
 
-  <form action="#" th:action="@{/registrar/procesarproducto}"
-        method="post" th:object="${webProductos}" enctype="multipart/form-data">
+  <form action="#" th:action="@{/registrar/procesarproducto}" th:object="${webProductos}"
+        method="post" enctype="multipart/form-data">
 
     <!-- Nombre de producto -->
     <div class="mb-3">
@@ -104,7 +104,7 @@
       </button>
     </div>
     <br>
-    <a th:href="@{/login}" class="btn px-3 py-2"
+    <a th:href="@{/gerencia}" class="btn px-3 py-2"
        style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">
       <i class="bi bi-box-arrow-in-left"></i> Volver
     </a>

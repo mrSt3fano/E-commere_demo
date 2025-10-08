@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar categoría</title>
+
+   </head>
+
+<body>
+<br><br><br>
+<div class="btn-container">
+
+    CATEGORIAS
+    <hr>
+    <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="cags : ${categoria}" class="border-bottom border-secondary">
+            <td th:text="${cags.id}  "></td>
+            <td th:text="${cags.nombre}  "></td>
+            <td th:text="${cags.descripcion}  "></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+    <br>
+    <hr>
+
+
+
+    Seleccione la categoría:
+    <form th:action="@{/consultarCategoriaProduct}" th:object="${numero}" method="get">
+    <select th:field="${numero.numb}">
+        <option th:each="temporales : ${categoria}" th:value="${temporales.id}" th:text="${temporales.nombre}"/>
+    </select>
+        <br>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-registrar">
+                <i class="bi bi-box-arrow-in-up"></i> Confirmar categoría
+            </button>
+        </div>
+    </form>
+<br><br>
+    <a th:href="@{/gerencia}" class="">
+        <i class="bi bi-arrow-left-circle"></i> VOLVER A PANEL
+    </a>
+
+</div>
+</body>
+</html>

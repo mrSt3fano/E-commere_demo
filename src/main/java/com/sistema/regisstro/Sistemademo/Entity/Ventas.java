@@ -15,10 +15,10 @@ public class Ventas {
     private int id;
 
     @Column(name = "cantidad")
-    private int cantidad;
+    private Integer cantidad;
 
     @Column(name = "precio_venta")
-    private float precioventa;
+    private Double precioventa;
 
     @Column(name="orden")
     private String orden;
@@ -40,7 +40,7 @@ public class Ventas {
     public Ventas() {
     }
 
-    public Ventas(int cantidad, float precioventa, String orden) {
+    public Ventas(Integer cantidad, Double precioventa, String orden) {
         this.cantidad = cantidad;
         this.precioventa = precioventa;
         this.orden=orden;
@@ -54,19 +54,19 @@ public class Ventas {
         this.id = id;
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public float getPrecioventa() {
+    public Double getPrecioventa() {
         return precioventa;
     }
 
-    public void setPrecioventa(float precioventa) {
+    public void setPrecioventa(Double precioventa) {
         this.precioventa = precioventa;
     }
 

@@ -116,11 +116,12 @@ public class CRegistro {
     }
 
     @PostMapping("/procesarproducto")
-    public void procesasnuevosproductos(Model theModel,
-                                         @Valid @ModelAttribute("imprimir") WebProduct nuevo)
+    public String procesasnuevosproductos(Model theModel,
+                  @Valid @ModelAttribute WebProduct nuevo)
     {
         Productos cate=servprod.guardarProductos(nuevo);
         theModel.addAttribute("productoregistrado",cate);
+        return "/Gerency/consultasDeAdmin";
     }
 
 }

@@ -6,6 +6,8 @@ public class WebCategory {
 
     private String descripcion;
 
+    private int numb;
+
     public WebCategory() {
     }
 
@@ -23,5 +25,13 @@ public class WebCategory {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getNumb() {
+        return numb;
+    }
+
+    public void setNumb(int numb) {
+        this.numb = numb;
     }
 }

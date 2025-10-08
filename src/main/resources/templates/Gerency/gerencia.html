@@ -13,127 +13,156 @@
       background: #f9fafb;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      padding: 50px 0;
+      padding: 50px 20px;
     }
 
     .btn-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .btn-custom {
-      width: 300px;
+      flex: 0 0 calc(33.333% - 25px);
+      max-width: 300px;
+      min-height: 100px;
       font-weight: 600;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 50px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
       transition: all 0.3s ease;
-      padding: 12px 20px;
+      padding: 20px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.1rem;
     }
 
-    /* Estilos individuales para diferenciar cada botón */
+    .btn-custom i {
+      margin-right: 10px;
+      font-size: 1.3rem;
+    }
+
+    /* Colores mejorados con mejor contraste */
     .btn-volver {
-      background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-      color: #721c24;
+      background: linear-gradient(135deg, #6c757d, #495057);
+      color: white;
       border: none;
     }
     .btn-volver:hover {
-      background: linear-gradient(135deg, #f1b0b7, #f8d7da);
-      transform: scale(1.05);
-    }
-
-    .btn-categorias {
-      background: linear-gradient(135deg, #d4edda, #c3e6cb);
-      color: #155724;
-      border: none;
-    }
-    .btn-categorias:hover {
-      background: linear-gradient(135deg, #b1dfbb, #d4edda);
-      transform: scale(1.05);
-    }
-
-    .btn-productos {
-      background: linear-gradient(135deg, #d1ecf1, #bee5eb);
-      color: #0c5460;
-      border: none;
-    }
-    .btn-productos:hover {
-      background: linear-gradient(135deg, #a9d8e3, #d1ecf1);
+      background: linear-gradient(135deg, #5a6268, #3d4348);
       transform: scale(1.05);
     }
 
     .btn-usuarios {
-      background: linear-gradient(135deg, #fff3cd, #ffeeba);
-      color: #856404;
+      background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+      color: white;
       border: none;
     }
     .btn-usuarios:hover {
-      background: linear-gradient(135deg, #ffe8a1, #fff3cd);
+      background: linear-gradient(135deg, #0b5ed7, #0a58ca);
       transform: scale(1.05);
     }
 
-    .btn-registrar-cat {
-      background: linear-gradient(135deg, #e2d9f3, #d6c7f7);
-      color: #4b1e87;
+    .btn-categorias {
+      background: linear-gradient(135deg, #6f42c1, #5a2d9c);
+      color: white;
       border: none;
     }
-    .btn-registrar-cat:hover {
-      background: linear-gradient(135deg, #cbb2f0, #e2d9f3);
+    .btn-categorias:hover {
+      background: linear-gradient(135deg, #5a2d9c, #4a2580);
       transform: scale(1.05);
     }
 
-    .btn-registrar-prod {
-      background: linear-gradient(135deg, #fde2e4, #fac3c7);
-      color: #8a1c31;
+    .btn-productos {
+      background: linear-gradient(135deg, #198754, #157347);
+      color: white;
       border: none;
     }
-    .btn-registrar-prod:hover {
-      background: linear-gradient(135deg, #f9a7af, #fde2e4);
+    .btn-productos:hover {
+      background: linear-gradient(135deg, #157347, #13653f);
+      transform: scale(1.05);
+    }
+
+    .btn-proveedores {
+      background: linear-gradient(135deg, #fd7e14, #e5670c);
+      color: white;
+      border: none;
+    }
+    .btn-proveedores:hover {
+      background: linear-gradient(135deg, #e5670c, #cc5c0a);
       transform: scale(1.05);
     }
 
     .btn-exportar {
-      background: linear-gradient(135deg, #cce5ff, #b8daff);
-      color: #004085;
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
       border: none;
+      flex: 0 0 calc(33.333% - 25px);
+      max-width: 300px;
     }
     .btn-exportar:hover {
-      background: linear-gradient(135deg, #99caff, #cce5ff);
+      background: linear-gradient(135deg, #c82333, #b21f2d);
       transform: scale(1.05);
     }
   </style>
 </head>
 <body>
+<hr>
+PANEL DE GERENCIA Y CONTROL DE INVENTARIO
+<hr>
 <div class="btn-container">
+
+  <!-- Primera fila: 3 botones -->
   <a th:href="@{/}" class="btn btn-custom btn-volver">
-    <i class="bi bi-box-arrow-left"></i> VOLVER A INICIO
+    <i class="bi bi-arrow-left-circle"></i> VOLVER A INICIO
+  </a>
+
+  <a th:href="@{/consultas}" class="btn btn-custom btn-usuarios">
+    <i class="bi bi-people"></i> VER USUARIOS
   </a>
 
   <a th:href="@{/consultarCategoria}" class="btn btn-custom btn-categorias">
-    <i class="bi bi-card-list"></i> CONSULTAR CATEGORÍAS
+    <i class="bi bi-card-list"></i> VER CATEGORIAS
   </a>
 
-  <a th:href="@{/consultarCategoriaProduct}" class="btn btn-custom btn-productos">
-    <i class="bi bi-grid"></i> CONSULTAR PRODUCTOS POR CATEGORÍA
-  </a>
-
-
-  <a th:href="@{/consultas}" class="btn btn-custom btn-usuarios">
-    <i class="bi bi-search"></i> CONSULTAR USUARIOS
-  </a>
-
-  <a th:href="@{/registrar/categoria}" class="btn btn-custom btn-registrar-cat">
+  <!-- Segunda fila: 3 botones -->
+  <a th:href="@{/registrar/categoria}" class="btn btn-custom btn-categorias">
     <i class="bi bi-plus-circle"></i> REGISTRAR CATEGORÍA
   </a>
 
-  <a th:href="@{/registrar/productos}" class="btn btn-custom btn-registrar-prod">
-    <i class="bi bi-bag-plus"></i> REGISTRAR PRODUCTO
+  <a th:href="@{/consultarcategoriauna}" class="btn btn-custom btn-productos">
+    <i class="bi bi-box-seam"></i> VER PRODUCTOS POR CATEGORÍA
   </a>
 
-  <a th:href="@{/exportar-csv}" class="btn btn-custom btn-exportar">
-    <i class="bi bi-file-earmark-arrow-down"></i> EXPORTAR REGISTROS
+  <a th:href="@{/registrar/productos}" class="btn btn-custom btn-productos">
+    <i class="bi bi-plus-square"></i> REGISTRAR PRODUCTO
   </a>
+
+  <!-- Tercera fila: 3 botones -->
+  <a th:href="@{/consultarproductos}" class="btn btn-custom btn-productos">
+    <i class="bi bi-search"></i> CONSULTAR PRODUCTOS
+  </a>
+
+  <a th:href="@{/}" class="btn btn-custom btn-proveedores">
+    <i class="bi bi-truck"></i> VER PROVEEDORES
+  </a>
+
+  <a th:href="@{/}" class="btn btn-custom btn-proveedores">
+    <i class="bi bi-plus-circle"></i> REGISTRAR PROVEEDORES
+  </a>
+
+  <!-- Cuarta fila: solo el botón de exportar centrado -->
+  <a th:href="@{/exportar-csv}" class="btn btn-custom btn-exportar">
+    <i class="bi bi-file-earmark-arrow-down"></i> EXPORTAR BOLETAS
+  </a>
+
+
+
+
 </div>
 </body>
 </html>

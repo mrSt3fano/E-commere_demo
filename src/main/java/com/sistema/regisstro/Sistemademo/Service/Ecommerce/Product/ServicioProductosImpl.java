@@ -58,6 +58,12 @@ public class ServicioProductosImpl implements ServicioProductos {
     }
 
     @Override
+    public List<Productos> consultaProductos(){
+        return p.findAll();
+    }
+
+
+    @Override
     public Productos guardarProductos(WebProduct novoProdc) {
 
         Productos pp=new Productos();

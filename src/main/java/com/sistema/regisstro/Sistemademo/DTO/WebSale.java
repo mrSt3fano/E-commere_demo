@@ -2,28 +2,28 @@ package com.sistema.regisstro.Sistemademo.DTO;
 
 public class WebSale {
 
-    private int cantidad;
+    private Integer cantidad;
 
-    private float precioventa;
+    private Double precioventa;
 
     private String orden;
 
     public WebSale() {
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public float getPrecioventa() {
+    public Double getPrecioventa() {
         return precioventa;
     }
 
-    public void setPrecioventa(float precioventa) {
+    public void setPrecioventa(Double precioventa) {
         this.precioventa = precioventa;
     }
 
