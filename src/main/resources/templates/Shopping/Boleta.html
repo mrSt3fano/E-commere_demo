@@ -17,8 +17,12 @@
     <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
         <thead class="table-dark">
         <tr>
-            <th>ID</th>
+            <th>ID Boleta</th>
             <th th:text="${ventafinal.id} ?: N.A"></th>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <th th:text="${usuario.nombre}" ></th>
         </tr>
         </thead>
 
@@ -39,7 +43,7 @@
 
     </table>
 
-    <form  method="post"
+    <form  method="get"
            th:action="@{/}">
 
         <button type="submit">

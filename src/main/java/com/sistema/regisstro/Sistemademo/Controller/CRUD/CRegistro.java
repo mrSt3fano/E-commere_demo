@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.BoletaData;
+import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.VentasData;
 import com.sistema.regisstro.Sistemademo.DTO.WebSalesTicket;
 import com.sistema.regisstro.Sistemademo.Entity.*;
 import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
@@ -20,6 +22,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,14 +39,18 @@ public class CRegistro {
     private ServicioProductos servprod;
     private ServicioBoletas servbol;
     private ServicioVentas boletafinal;
+    private BoletaData ultimo;
+    private VentasData generarFinal;
 
     @Autowired
-    public CRegistro(Servicio serv, ServicioCategorias saf, ServicioProductos aa, ServicioBoletas s, ServicioVentas v) {
+    public CRegistro(VentasData aqq, BoletaData af,Servicio serv, ServicioCategorias saf, ServicioProductos aa, ServicioBoletas s, ServicioVentas v) {
         this.serv = serv;
         this.servcat=saf;
         this.servprod=aa;
         this.servbol=s;
         this.boletafinal=v;
+        this.ultimo=af;
+        this.generarFinal=aqq;
     }
 
     @InitBinder
@@ -128,15 +135,33 @@ public class CRegistro {
     }
 
     @PostMapping("/generarBoleta")
-    public String generarBoletaa(@RequestParam int id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dt,
+    public String generarBoletaa(Authentication usuarioact, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dt,
                                  @RequestParam("cantidad") int c, Model mo){
 
-        Boleta boleta=servbol.generarboleta(id,dt);
-        Ventas ventas=boletafinal.generarventas(boleta,c,"1");
+        String usuario = usuarioact.getName();
+        Usuario userencontrado=serv.encontrarUsuarioAhora(usuario);
+        int ides=userencontrado.getId();
+        Boleta boleta=new Boleta();
+        boleta.setUs(userencontrado);
+        boleta.setFecha(dt);
+
+        ultimo.save(boleta);
+
+        Ventas ventas=new Ventas();
+        ventas.setBol(boleta);
+        ventas.setCantidad(c);
+        ventas.setOrden("1");
+        ventas.setPrecioventa(1.1);
+
+        generarFinal.save(ventas);
+
         mo.addAttribute("ventafinal",ventas);
         mo.addAttribute("fecha",dt);
-//        mo.addAttribute("producto",p);
+        mo.addAttribute("usuario",userencontrado);
         return "/Shopping/Boleta";
     }
+
+
+
 
 }

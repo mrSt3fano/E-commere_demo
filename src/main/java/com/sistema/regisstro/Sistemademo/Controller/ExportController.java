@@ -26,7 +26,7 @@ public class ExportController {
     @GetMapping("/exportar-csv")
     public void exportarCsv(HttpServletResponse response) throws Exception {
         response.setContentType("text/csv");
-        response.setHeader("Content-Disposition", "attachment; filename=dataset1.csv");
+        response.setHeader("Content-Disposition", "attachment; filename=Ecommerce.csv");
 
         List<Object[]> Cate = op.obtenerConsultasGenerales();
 

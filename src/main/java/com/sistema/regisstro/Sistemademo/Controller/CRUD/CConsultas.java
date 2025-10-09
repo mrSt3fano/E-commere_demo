@@ -47,9 +47,10 @@ public class CConsultas {
 
     @GetMapping("/consultaID")
     public String consultarusuario(Authentication usuarioact, Model mo) {
+
         String usuario = usuarioact.getName();
-        Usuario user=ser.encontrarUsuarioAhora(usuario);
-        mo.addAttribute("s1",user);
+        Usuario userencontrado=ser.encontrarUsuarioAhora(usuario);
+        mo.addAttribute("s1",userencontrado);
         LocalDateTime pru=LocalDateTime.now();
         mo.addAttribute("prueba",pru);
 //        Productos producto=prod.consultaProductoID(id);

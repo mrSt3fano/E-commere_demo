@@ -25,7 +25,6 @@ public class ServicioVentasImpl implements ServicioVentas {
         ventas.setCantidad(cantidad);
         ventas.setOrden(orden);
         ventas.setPrecioventa(1.1);
-//        ventas.setBol;
 
         generarFinal.save(ventas);
         return ventas;
