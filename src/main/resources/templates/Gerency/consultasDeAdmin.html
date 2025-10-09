@@ -151,6 +151,7 @@ CONSULTA PRODUCTOS
         <th>Precio</th>
         <th>Marca</th>
         <th>Stock</th>
+        <th>Comprar</th>
     </tr>
     </thead>
 
@@ -161,6 +162,15 @@ CONSULTA PRODUCTOS
         <td th:text="${producto.precio} ?: N.A"></td>
         <td th:text="${producto.marca} ?: N.A"></td>
         <td th:text="${producto.stock} ?: N.A"></td>
+        <td>
+            <form  method="post"
+                   th:action="@{'/compras/seleccionar/' + ${producto.id}}">
+
+                <button type="submit" class="btn btn-actualizar">
+                    <i class="bi bi-box-arrow-in-up"></i> Comprar!
+                </button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>

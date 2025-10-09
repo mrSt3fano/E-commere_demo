@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>DATOS COMPRADOR</title>
+
+</head>
+
+<body>
+<br><br><br>
+<div class="btn-container">
+
+    <br><hr>
+    DATOS DEL COMPRADOR
+
+    <hr>
+    <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+
+            <th th:text="${s1.id} ?: N.A"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${s1.nombre} ?: N.A"></td>
+        </tr>
+        <tr>
+            <td>Fecha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${prueba} ?: N.A" ></td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Producto</td>-->
+<!--            <td name="producto" th:text="${producto} ?: N.A" ></td>-->
+<!--        </tr>-->
+        </tbody>
+
+    </table>
+
+    <form   method="post" th:action="@{/registrar/generarBoleta}">
+        <label>Determine la cantidad: </label>
+        <input type="number" name="cantidad" placeholder="cantidad del producto">
+        <br>
+        <input type="hidden" name="id" th:value="${s1.id}">
+        <input type="hidden" name="dt" th:value="${prueba}">
+        <button type="submit">
+            CONTINUAR
+        </button>
+    </form>
+
+    <br><hr><br>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar productos</title>
+
+</head>
+
+<body>
+<br><br><br>
+<div class="btn-container">
+
+    <br><hr>
+    PRODUCTO AÑADIDO CON ÉXITO
+    <hr>
+    <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Marca</th>
+            <th>Stock</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="producto : ${productocomprado}">
+            <td th:text="${producto.id} ?: N.A"></td>
+            <td th:text="${producto.nombre} ?: N.A"></td>
+            <td th:text="${producto.precio} ?: N.A"></td>
+            <td th:text="${producto.marca} ?: N.A"></td>
+            <td th:text="${producto.stock} ?: N.A"></td>
+
+        </tr>
+        </tbody>
+
+        <form  method="get"
+               th:action="@{/consultaID}">
+
+            <button type="submit" class="btn btn-actualizar">
+                <i class="bi bi-box-arrow-in-up"></i> CONFIRMAR PRODUCTO
+            </button>
+        </form>
+
+    </table>
+    <br><hr><br>
+
+
+</div>
+</body>
+</html>

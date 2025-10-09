@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BOLETA</title>
+
+</head>
+
+<body>
+<br><br><br>
+<div class="btn-container">
+
+    <br><hr>
+    BOLETA GENERADA
+
+    <hr>
+    <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded-3 overflow-hidden">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th th:text="${ventafinal.id} ?: N.A"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>Cantidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${ventafinal.cantidad} ?: N.A"></td>
+        </tr>
+        <tr>
+            <td>Fecha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${dt} ?: N.A" ></td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Producto</td>-->
+<!--            <td th:text="${producto} ?: N.A"></td>-->
+<!--        </tr>-->
+        </tbody>
+
+    </table>
+
+    <form  method="post"
+           th:action="@{/}">
+
+        <button type="submit">
+            LISTO
+        </button>
+    </form>
+
+    <br><hr><br>
+
+
+</div>
+</body>
+</html>

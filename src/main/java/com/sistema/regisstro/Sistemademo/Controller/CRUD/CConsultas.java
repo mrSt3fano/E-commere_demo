@@ -8,12 +8,18 @@ import com.sistema.regisstro.Sistemademo.Entity.Usuario;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Category.ServicioCategorias;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product.ServicioProductos;
 import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -32,11 +38,23 @@ public class CConsultas {
 
     @GetMapping("/consultas")
     public String mostrarconsultas(Model mo) {
-        List<Usuario>uss = ser.consultausuarios();
+        List<Usuario> uss = ser.consultausuarios();
         List<Roles> rols=ser.consultarroles();
         mo.addAttribute("conss", uss);
         mo.addAttribute("roles",rols);
         return "/Gerency/consultasDeAdmin";
+    }
+
+    @GetMapping("/consultaID")
+    public String consultarusuario(Authentication usuarioact, Model mo) {
+        String usuario = usuarioact.getName();
+        Usuario user=ser.encontrarUsuarioAhora(usuario);
+        mo.addAttribute("s1",user);
+        LocalDateTime pru=LocalDateTime.now();
+        mo.addAttribute("prueba",pru);
+//        Productos producto=prod.consultaProductoID(id);
+//        mo.addAttribute("producto",producto);
+        return "/Shopping/fechaactual";
     }
 
     @GetMapping("/consultarCategoria")

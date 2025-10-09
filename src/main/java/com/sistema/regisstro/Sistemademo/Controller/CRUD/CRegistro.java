@@ -1,31 +1,30 @@
 package com.sistema.regisstro.Sistemademo.Controller.CRUD;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.sistema.regisstro.Sistemademo.Entity.Categorias;
-import com.sistema.regisstro.Sistemademo.Entity.Productos;
+import com.sistema.regisstro.Sistemademo.DTO.WebSalesTicket;
+import com.sistema.regisstro.Sistemademo.Entity.*;
 import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
 import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
 import com.sistema.regisstro.Sistemademo.DTO.WebUser;
-import com.sistema.regisstro.Sistemademo.Entity.Usuario;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Category.ServicioCategorias;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product.ServicioProductos;
+import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Sale.ServicioVentas;
+import com.sistema.regisstro.Sistemademo.Service.Ecommerce.SalesTicket.ServicioBoletas;
 import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/registrar")
@@ -35,12 +34,16 @@ public class CRegistro {
     private Servicio serv;
     private ServicioCategorias servcat;
     private ServicioProductos servprod;
+    private ServicioBoletas servbol;
+    private ServicioVentas boletafinal;
 
     @Autowired
-    public CRegistro(Servicio serv, ServicioCategorias saf, ServicioProductos aa) {
+    public CRegistro(Servicio serv, ServicioCategorias saf, ServicioProductos aa, ServicioBoletas s, ServicioVentas v) {
         this.serv = serv;
         this.servcat=saf;
         this.servprod=aa;
+        this.servbol=s;
+        this.boletafinal=v;
     }
 
     @InitBinder
@@ -122,6 +125,18 @@ public class CRegistro {
         Productos cate=servprod.guardarProductos(nuevo);
         theModel.addAttribute("productoregistrado",cate);
         return "/Gerency/consultasDeAdmin";
+    }
+
+    @PostMapping("/generarBoleta")
+    public String generarBoletaa(@RequestParam int id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dt,
+                                 @RequestParam("cantidad") int c, Model mo){
+
+        Boleta boleta=servbol.generarboleta(id,dt);
+        Ventas ventas=boletafinal.generarventas(boleta,c,"1");
+        mo.addAttribute("ventafinal",ventas);
+        mo.addAttribute("fecha",dt);
+//        mo.addAttribute("producto",p);
+        return "/Shopping/Boleta";
     }
 
 }
