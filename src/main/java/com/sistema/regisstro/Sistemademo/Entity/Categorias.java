@@ -20,6 +20,7 @@ public class Categorias {
     @Column(name = "descripcion")
     private String descripcion;
 
+    //relacion con productos
     @OneToMany(mappedBy = "cat",cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Productos> productosList;

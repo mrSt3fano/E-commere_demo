@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "boleta")
-public class Boleta {
+@Table(name = "pedido_usuario")
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,9 @@ public class Boleta {
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
+    @Column(name="orden")
+    private Integer orden;
+
     //relacion con usuarios
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
@@ -24,15 +27,16 @@ public class Boleta {
     private Usuario us;
 
     //relacion con ventas
-    @OneToMany(mappedBy = "bol", cascade = {CascadeType.DETACH,CascadeType.MERGE,
+    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Ventas>ventasList;
 
-    public Boleta() {
+    public Pedido() {
     }
 
-    public Boleta(LocalDateTime fecha) {
+    public Pedido(LocalDateTime fecha, Integer orden) {
         this.fecha = fecha;
+        this.orden=orden;
     }
 
     public int getId() {
@@ -51,6 +55,14 @@ public class Boleta {
         this.fecha = fecha;
     }
 
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
+    }
+
     public Usuario getUs() {
         return us;
     }
@@ -64,14 +76,15 @@ public class Boleta {
             ventasList=new ArrayList<>();
         }
         ventasList.add(v);
-        v.setBol(this);
+        v.setPedido(this);
     }
 
     @Override
     public String toString() {
-        return "Boleta{" +
-                "id=" + id +
-                ", fecha=" + fecha +
+        return "Pedido{" +
+                "fecha=" + fecha +
+                ", orden=" + orden +
+                ", id=" + id +
                 '}';
     }
 }

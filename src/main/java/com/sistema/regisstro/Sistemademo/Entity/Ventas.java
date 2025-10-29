@@ -2,9 +2,6 @@ package com.sistema.regisstro.Sistemademo.Entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "venta")
 public class Ventas {
@@ -20,30 +17,26 @@ public class Ventas {
     @Column(name = "precio_venta")
     private Double precioventa;
 
-    @Column(name="orden")
-    private String orden;
 
-    //relacion con boleta
+    //relacion con pedido
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinColumn(name = "id_boleta")
-    private Boleta bol;
+    @JoinColumn(name = "id_pedido")
+    private Pedido pedido;
 
     //relacion con productos
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name = "tabla_intermedia",
-            joinColumns = @JoinColumn(name = "id_venta"),
-            inverseJoinColumns = @JoinColumn(name = "id_producto"))
-    private List<Productos> prodc;
+    @JoinColumn(name = "id_producto")
+    private Productos prod2;
+
 
     public Ventas() {
     }
 
-    public Ventas(Integer cantidad, Double precioventa, String orden) {
+    public Ventas(Integer cantidad, Double precioventa) {
         this.cantidad = cantidad;
         this.precioventa = precioventa;
-        this.orden=orden;
     }
 
     public int getId() {
@@ -70,33 +63,23 @@ public class Ventas {
         this.precioventa = precioventa;
     }
 
-    public String getOrden() { return orden; }
-
-    public void setOrden(String orden) { this.orden = orden; }
-
-    public Boleta getBol() {
-        return bol;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setBol(Boleta bol) {
-        this.bol = bol;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
-    public List<Productos> getProdc() {
-        return prodc;
+    public Productos getProd2() {
+        return prod2;
     }
 
-    public void setProdc(List<Productos> prodc) {
-        this.prodc = prodc;
+    public void setProd2(Productos prod2) {
+        this.prod2 = prod2;
     }
 
-    public void agregarprodc(Productos p){
-        if(prodc==null){
-            prodc=new ArrayList<>();
-        }
-        prodc.add(p);
-        p.agregarventa(this);
-    }
+
 
     @Override
     public String toString() {
@@ -104,7 +87,6 @@ public class Ventas {
                 "id=" + id +
                 ", cantidad=" + cantidad +
                 ", precioventa=" + precioventa +
-                ", orden='" + orden + '\'' +
                 '}';
     }
 }

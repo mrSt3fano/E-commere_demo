@@ -33,19 +33,15 @@ public class Productos {
     private Categorias cat;
 
     //relacion con proveedores
-//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
-//            CascadeType.PERSIST,CascadeType.REFRESH})
-//    @JoinColumn(name = "id_proveedor")
-//    private Proveedores prov;
     @ManyToMany(mappedBy = "productosProv", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Proveedores> prov;
 
-
     //relacion con ventas
-    @ManyToMany(mappedBy = "prodc", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,
+    @OneToMany(mappedBy = "prod2", cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH})
-    private List<Ventas> vent;
+    private List<Ventas>vent;
+
 
     public Productos() {
     }
@@ -121,13 +117,15 @@ public class Productos {
         this.vent = vent;
     }
 
+
     public void agregarventa(Ventas vv){
         if(vent==null){
             vent=new ArrayList<>();
         }
         vent.add(vv);
-        vv.agregarprodc(this);
+        vv.setProd2(this);
     }
+
 
     public void agregarproveedor(Proveedores pp){
         if(prov==null){

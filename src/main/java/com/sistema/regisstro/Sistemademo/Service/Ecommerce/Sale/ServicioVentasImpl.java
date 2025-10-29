@@ -1,8 +1,7 @@
 package com.sistema.regisstro.Sistemademo.Service.Ecommerce.Sale;
 
-import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.BoletaData;
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.VentasData;
-import com.sistema.regisstro.Sistemademo.Entity.Boleta;
+import com.sistema.regisstro.Sistemademo.Entity.Pedido;
 import com.sistema.regisstro.Sistemademo.Entity.Ventas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +18,10 @@ public class ServicioVentasImpl implements ServicioVentas {
 
 
     @Override
-    public Ventas generarventas(Boleta novoboleta, int cantidad, String orden) {
+    public Ventas generarventas(Pedido novoboleta, int cantidad) {
         Ventas ventas=new Ventas();
-        ventas.setBol(novoboleta);
+        ventas.setPedido(novoboleta);
         ventas.setCantidad(cantidad);
-        ventas.setOrden(orden);
         ventas.setPrecioventa(1.1);
 
         generarFinal.save(ventas);

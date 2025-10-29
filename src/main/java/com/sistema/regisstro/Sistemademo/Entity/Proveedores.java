@@ -44,7 +44,6 @@ public class Proveedores {
     private List<Productos> productosProv;
 
 
-
     public Proveedores() {
     }
 

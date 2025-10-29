@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -46,15 +47,19 @@ public class CConsultas {
     }
 
     @GetMapping("/consultaID")
-    public String consultarusuario(Authentication usuarioact, Model mo) {
+    public String consultarusuario(@RequestParam("productocomprado")int ide,
+                                   Authentication usuarioact, Model mo) {
 
         String usuario = usuarioact.getName();
         Usuario userencontrado=ser.encontrarUsuarioAhora(usuario);
         mo.addAttribute("s1",userencontrado);
+
         LocalDateTime pru=LocalDateTime.now();
+
+        Productos pp=prod.consultaProductoID(ide);
+
         mo.addAttribute("prueba",pru);
-//        Productos producto=prod.consultaProductoID(id);
-//        mo.addAttribute("producto",producto);
+        mo.addAttribute("producto",pp);
         return "/Shopping/fechaactual";
     }
 

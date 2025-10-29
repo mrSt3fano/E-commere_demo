@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.BoletaData;
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.VentasData;
-import com.sistema.regisstro.Sistemademo.DTO.WebSalesTicket;
 import com.sistema.regisstro.Sistemademo.Entity.*;
 import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
 import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
@@ -135,23 +134,30 @@ public class CRegistro {
     }
 
     @PostMapping("/generarBoleta")
-    public String generarBoletaa(Authentication usuarioact, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dt,
-                                 @RequestParam("cantidad") int c, Model mo){
+    public String generarBoletaa(Authentication usuarioact,
+                                 @RequestParam("cantidad") int c,
+                                 @RequestParam("productoid") int prodid, Model mo){
+
+        Productos pp=servprod.consultaProductoID(prodid);
 
         String usuario = usuarioact.getName();
         Usuario userencontrado=serv.encontrarUsuarioAhora(usuario);
         int ides=userencontrado.getId();
-        Boleta boleta=new Boleta();
-        boleta.setUs(userencontrado);
-        boleta.setFecha(dt);
+        LocalDateTime dt=LocalDateTime.now();
 
-        ultimo.save(boleta);
+        Pedido pedido =new Pedido();
+        pedido.setUs(userencontrado);
+        pedido.setFecha(dt);
+        pedido.setOrden(1);
+
+        ultimo.save(pedido);
 
         Ventas ventas=new Ventas();
-        ventas.setBol(boleta);
+        ventas.setProd2(pp);
+        ventas.setPedido(pedido);
         ventas.setCantidad(c);
-        ventas.setOrden("1");
-        ventas.setPrecioventa(1.1);
+        ventas.setPrecioventa(12.0);
+
 
         generarFinal.save(ventas);
 

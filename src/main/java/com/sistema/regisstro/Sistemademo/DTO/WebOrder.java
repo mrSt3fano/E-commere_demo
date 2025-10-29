@@ -2,11 +2,13 @@ package com.sistema.regisstro.Sistemademo.DTO;
 
 import java.time.LocalDateTime;
 
-public class WebSalesTicket {
+public class WebOrder {
 
     private LocalDateTime fechaActual;
 
-    public WebSalesTicket() {
+    private Integer orden;
+
+    public WebOrder() {
     }
 
     public LocalDateTime getFechaActual() {
@@ -15,5 +17,13 @@ public class WebSalesTicket {
 
     public void setFechaActual(LocalDateTime fechaActual) {
         this.fechaActual = fechaActual;
+    }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 }

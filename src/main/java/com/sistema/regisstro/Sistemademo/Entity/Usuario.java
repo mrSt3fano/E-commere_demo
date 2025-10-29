@@ -29,7 +29,7 @@ public class Usuario {
     private byte[] imagen;
 
     @OneToMany(mappedBy="us",cascade = CascadeType.ALL)
-    private List<Boleta> boleta;
+    private List<Pedido> pedido;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.DETACH,
     CascadeType.PERSIST,CascadeType.REFRESH})
@@ -97,11 +97,11 @@ public class Usuario {
         this.imagen = imagen;
     }
 
-    public void añadirboleta(Boleta b){
-        if(boleta==null){
-            boleta=new ArrayList<>();
+    public void añadirboleta(Pedido b){
+        if(pedido ==null){
+            pedido =new ArrayList<>();
         }
-        boleta.add(b);
+        pedido.add(b);
         b.setUs(this);
     }
 

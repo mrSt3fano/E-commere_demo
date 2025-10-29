@@ -35,9 +35,8 @@
         </tr>
         </tbody>
 
-        <form  method="get"
-               th:action="@{/consultaID}">
-
+        <form  method="get"  th:action="@{/consultaID}">
+            <input type="hidden" name="productocomprado" th:value="${productocomprado.id}">
             <button type="submit" class="btn btn-actualizar">
                 <i class="bi bi-box-arrow-in-up"></i> CONFIRMAR PRODUCTO
             </button>

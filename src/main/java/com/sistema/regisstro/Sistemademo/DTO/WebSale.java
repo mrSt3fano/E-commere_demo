@@ -6,7 +6,6 @@ public class WebSale {
 
     private Double precioventa;
 
-    private String orden;
 
     public WebSale() {
     }
@@ -27,7 +26,4 @@ public class WebSale {
         this.precioventa = precioventa;
     }
 
-    public String getOrden() { return orden; }
-
-    public void setOrden(String orden) { this.orden = orden; }
 }
