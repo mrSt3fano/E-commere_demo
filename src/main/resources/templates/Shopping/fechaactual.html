@@ -40,6 +40,10 @@
             <td>Precio&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td th:text="${producto.precio} ?: N.A" ></td>
         </tr>
+        <tr>
+            <td>Proveedor&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${proveedor.compania} ?: N.A" ></td>
+        </tr>
         </tbody>
 
     </table>
@@ -49,7 +53,7 @@
         <input type="number" name="cantidad" placeholder="cantidad del producto">
         <br>
         <input type="hidden" name="id" th:value="${s1.id}">
-        <input type="hidden" name="dt" th:value="${prueba}">
+<!--        <input type="hidden" name="dt" th:value="${prueba}">-->
         <input type="hidden" name="productoid" th:value="${producto.id}">
         <button type="submit">
             CONTINUAR

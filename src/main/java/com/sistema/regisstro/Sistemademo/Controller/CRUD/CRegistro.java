@@ -162,8 +162,9 @@ public class CRegistro {
         generarFinal.save(ventas);
 
         mo.addAttribute("ventafinal",ventas);
-        mo.addAttribute("fecha",dt);
+        mo.addAttribute("fecha",pedido.getFecha());
         mo.addAttribute("usuario",userencontrado);
+        mo.addAttribute("producto",pp);
         return "/Shopping/Boleta";
     }
 

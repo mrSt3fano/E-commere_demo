@@ -1,8 +1,10 @@
 package com.sistema.regisstro.Sistemademo.Controller.Shop;
 
 import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
+import com.sistema.regisstro.Sistemademo.DTO.WebSupplier;
 import com.sistema.regisstro.Sistemademo.DTO.WebUser;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
+import com.sistema.regisstro.Sistemademo.Entity.Proveedores;
 import com.sistema.regisstro.Sistemademo.Entity.Usuario;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product.ServicioProductos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,10 @@ public class CCompra {
     @PostMapping("/seleccionar/{id}")
     public String fomrs(@PathVariable int id, Model mo){
         Productos productoscomprados=pp.consultaProductoID(id);
+        List<Proveedores> prov=pp.consultarProveedores(id);
         mo.addAttribute("productocomprado",productoscomprados);
+        mo.addAttribute("proveedores",prov);
+        mo.addAttribute("novo", new WebSupplier());
         return "/Shopping/ConfirmarCompras";
     }
 

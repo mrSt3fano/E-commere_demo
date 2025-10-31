@@ -27,18 +27,23 @@
         </thead>
 
         <tbody>
+
+        <tr>
+            <td>Fecha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${fecha} ?: N.A" ></td>
+        </tr>
+        <tr>
+            <td>Producto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${producto.nombre} ?: N.A"></td>
+        </tr>
+        <tr>
+            <td>Marca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td th:text="${producto.marca} ?: N.A"></td>
+        </tr>
         <tr>
             <td>Cantidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td th:text="${ventafinal.cantidad} ?: N.A"></td>
         </tr>
-        <tr>
-            <td>Fecha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td th:text="${dt} ?: N.A" ></td>
-        </tr>
-<!--        <tr>-->
-<!--            <td>Producto</td>-->
-<!--            <td th:text="${producto} ?: N.A"></td>-->
-<!--        </tr>-->
         </tbody>
 
     </table>

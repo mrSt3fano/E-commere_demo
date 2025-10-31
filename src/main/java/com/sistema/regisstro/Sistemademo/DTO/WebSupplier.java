@@ -14,6 +14,8 @@ public class WebSupplier {
 
     private String tipoDeproducto;
 
+    private Integer numraro;
+
     public WebSupplier() {
     }
 
@@ -60,4 +62,12 @@ public class WebSupplier {
     public String getTipoDeproducto() {return tipoDeproducto; }
 
     public void setTipoDeproducto(String tipoDeproducto) { this.tipoDeproducto = tipoDeproducto; }
+
+    public Integer getNumraro() {
+        return numraro;
+    }
+
+    public void setNumraro(Integer numraro) {
+        this.numraro = numraro;
+    }
 }

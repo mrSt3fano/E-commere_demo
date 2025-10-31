@@ -21,6 +21,7 @@
             <th>Precio</th>
             <th>Marca</th>
             <th>Stock</th>
+            <th>Elegir Proveedor</th>
         </tr>
         </thead>
 
@@ -31,16 +32,27 @@
             <td th:text="${producto.precio} ?: N.A"></td>
             <td th:text="${producto.marca} ?: N.A"></td>
             <td th:text="${producto.stock} ?: N.A"></td>
+            <td >
+
+                <form th:action="@{/consultaID}" th:object="${novo}" method="get">
+                    <select th:field="${novo.numraro}">
+                        <option th:each="temporales : ${proveedores}" th:value="${temporales.id}" th:text="${temporales.compania}"/>
+                    </select>
+                    <br>
+                    <input type="hidden" name="productocomprado" th:value="${productocomprado.id}">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-registrar">
+                            <i class="bi bi-box-arrow-in-up"></i> Confirmar Proveedor
+                        </button>
+                    </div>
+                </form>
+
+            </td>
 
         </tr>
         </tbody>
 
-        <form  method="get"  th:action="@{/consultaID}">
-            <input type="hidden" name="productocomprado" th:value="${productocomprado.id}">
-            <button type="submit" class="btn btn-actualizar">
-                <i class="bi bi-box-arrow-in-up"></i> CONFIRMAR PRODUCTO
-            </button>
-        </form>
+
 
     </table>
     <br><hr><br>

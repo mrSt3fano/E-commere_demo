@@ -4,6 +4,7 @@ import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.CategoriaData;
 import com.sistema.regisstro.Sistemademo.AccessDB.SpringREST.ProductoData;
 import com.sistema.regisstro.Sistemademo.Entity.Categorias;
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
+import com.sistema.regisstro.Sistemademo.Entity.Proveedores;
 import com.sistema.regisstro.Sistemademo.Entity.Ventas;
 import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,23 @@ public class ServicioProductosImpl implements ServicioProductos {
     @Override
     public List<Ventas> consultarVentas() {
         return List.of();
+    }
+
+
+    @Override
+    public List<Proveedores> consultarProveedores(int actual) {
+
+        Optional<Productos> resultado = p.findById(actual);
+        Productos c =null;
+        if(resultado.isPresent()){
+            c=resultado.get();
+        }
+        else{
+            throw new RuntimeException("No se pudo encontrar por el id: "+actual);
+        }
+
+        return c.getProv();
+
+
     }
 }

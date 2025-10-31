@@ -1,6 +1,7 @@
 package com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product;
 
 import com.sistema.regisstro.Sistemademo.Entity.Productos;
+import com.sistema.regisstro.Sistemademo.Entity.Proveedores;
 import com.sistema.regisstro.Sistemademo.Entity.Ventas;
 import com.sistema.regisstro.Sistemademo.DTO.WebProduct;
 
@@ -14,4 +15,5 @@ public interface ServicioProductos {
     Productos actualizarProducto(Productos actual, WebProduct novo);
     void borrarProducto(Productos catg);
     List<Ventas> consultarVentas();
+    public List<Proveedores> consultarProveedores(int actual);
 }

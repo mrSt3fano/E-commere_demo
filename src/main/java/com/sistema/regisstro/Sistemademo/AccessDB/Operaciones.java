@@ -11,20 +11,15 @@ import java.util.List;
 public interface Operaciones extends JpaRepository<Usuario,Integer> {
 
 
-    @Query("SELECT u.nombre AS Usuario, u.password, \n" +
-            "       b.fecha, b.orden, v.cantidad,p.precio as precio_unitario, \n" +
-            "       (p.precio * v.cantidad) as precio_final,\n" +
-            "p.nombre as nombre_producto,ca.nombre as categoria, ca.descripcion,\n" +
-            "p.marca, pv.tipoDEproducto,\n" +
-            "pv.nombre as nombre_proveedor, pv.ciudad as ciudad, pv.compania\n" +
-            "as nombre_compañia, pv.numero as telefono\n"+
+    @Query("SELECT b.fecha, p.nombre as producto,ca.nombre as categoria," +
+            "p.precio as precio_unitario,v.cantidad, pv.ciudad, pv.nombre as vendedor"+
             " FROM Usuario u " +
             " JOIN u.pedido b " +
             " JOIN b.ventasList v " +
             " JOIN v.prod2 p"+
             " JOIN p.prov pv"+
-            " JOIN p.cat ca ")
+            " JOIN p.cat ca " +
+            " ORDER BY b.fecha ASC")
     List<Object[]> obtenerConsultasGenerales();
-
 
 }

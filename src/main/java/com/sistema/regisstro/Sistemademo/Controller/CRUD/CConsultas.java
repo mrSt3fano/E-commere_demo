@@ -1,12 +1,11 @@
 package com.sistema.regisstro.Sistemademo.Controller.CRUD;
 
 import com.sistema.regisstro.Sistemademo.DTO.WebCategory;
-import com.sistema.regisstro.Sistemademo.Entity.Categorias;
-import com.sistema.regisstro.Sistemademo.Entity.Productos;
-import com.sistema.regisstro.Sistemademo.Entity.Roles;
-import com.sistema.regisstro.Sistemademo.Entity.Usuario;
+import com.sistema.regisstro.Sistemademo.DTO.WebSupplier;
+import com.sistema.regisstro.Sistemademo.Entity.*;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Category.ServicioCategorias;
 import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Product.ServicioProductos;
+import com.sistema.regisstro.Sistemademo.Service.Ecommerce.Supplier.SevicioProveedor;
 import com.sistema.regisstro.Sistemademo.Service.Usuario.Servicio;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -29,13 +28,16 @@ public class CConsultas {
     private Servicio ser;
     private ServicioCategorias serv;
     private ServicioProductos prod;
+    private SevicioProveedor pv;
 
     @Autowired
-    public CConsultas(Servicio ser, ServicioCategorias serv, ServicioProductos p) {
+    public CConsultas(Servicio ser, ServicioCategorias serv, ServicioProductos prod, SevicioProveedor pv) {
         this.ser = ser;
         this.serv = serv;
-        this.prod=p;
+        this.prod = prod;
+        this.pv = pv;
     }
+
 
     @GetMapping("/consultas")
     public String mostrarconsultas(Model mo) {
@@ -48,7 +50,12 @@ public class CConsultas {
 
     @GetMapping("/consultaID")
     public String consultarusuario(@RequestParam("productocomprado")int ide,
+                                   @ModelAttribute WebSupplier s,
                                    Authentication usuarioact, Model mo) {
+
+
+        Proveedores proved=pv.consultaProveedoresID(s.getNumraro());
+        mo.addAttribute("proveedor",proved);
 
         String usuario = usuarioact.getName();
         Usuario userencontrado=ser.encontrarUsuarioAhora(usuario);
